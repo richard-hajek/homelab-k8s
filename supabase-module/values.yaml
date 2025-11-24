@@ -1,7 +1,7 @@
 db:
   enabled: true
   image:
-    tag: 15.1.0.147
+    tag: "15.1.0.147"
   livenessProbe:
     exec:
       command:
@@ -11,6 +11,9 @@ db:
     initialDelaySeconds: 3
   persistence:
     enabled: false
+  autoscaling:
+    enabled: false
+  replicaCount: 1
 
 studio:
   image:
@@ -25,6 +28,9 @@ studio:
       path: /api/profile
       port: 3000
     initialDelaySeconds: 3
+  autoscaling:
+    enabled: false
+  replicaCount: 1
 
 auth:
   image:
@@ -38,10 +44,16 @@ auth:
     GOTRUE_SMTP_HOST: "smtp.example.com"
     GOTRUE_SMTP_PORT: "587"
     GOTRUE_SMTP_SENDER_NAME: "your-mail@example.com"
+  autoscaling:
+    enabled: false
+  replicaCount: 1
 
 rest:
   image:
     tag: v12.0.1
+  autoscaling:
+    enabled: false
+  replicaCount: 1
 
 realtime:
   image:
@@ -51,10 +63,16 @@ realtime:
       path: /
       port: 4000
     initialDelaySeconds: 3
+  autoscaling:
+    enabled: false
+  replicaCount: 1
 
 meta:
   image:
     tag: v0.80.0
+  autoscaling:
+    enabled: false
+  replicaCount: 1
 
 storage:
   image:
@@ -66,6 +84,9 @@ storage:
     initialDelaySeconds: 3
   persistence:
     enabled: false
+  autoscaling:
+    enabled: false
+  replicaCount: 1
 
 imgproxy:
   image:
@@ -80,6 +101,9 @@ imgproxy:
     initialDelaySeconds: 3
   persistence:
     enabled: false
+  autoscaling:
+    enabled: false
+  replicaCount: 1
 
 kong:
   image:
@@ -102,6 +126,9 @@ kong:
         paths:
           - path: /
             pathType: Prefix
+  autoscaling:
+    enabled: false
+  replicaCount: 1
 
 analytics:
   image:
@@ -111,6 +138,9 @@ analytics:
       path: /health
       port: 4000
     initialDelaySeconds: 3
+  autoscaling:
+    enabled: false
+  replicaCount: 1
 
 vector:
   image:
@@ -130,7 +160,13 @@ vector:
     - name: pod-logs
       hostPath:
         path: /var/log/pods
+  autoscaling:
+    enabled: false
+  replicaCount: 1
 
 functions:
   image:
     tag: v1.41.2
+  autoscaling:
+    enabled: false
+  replicaCount: 1

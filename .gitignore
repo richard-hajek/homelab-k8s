@@ -29,3 +29,4 @@ terraform.rc
 # Secrets files
 **/values.secrets.yaml
 values.secrets.yaml
+**/secrets.yaml
